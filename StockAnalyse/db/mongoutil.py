@@ -11,7 +11,7 @@ def get_collection(name):
     return db[name]
 
 
-def get_harden_stocks():
+def get_harden_codes():
     conn = get_collection(constants.harden_stocks)
     stocks = []
     result = conn.find()

@@ -31,7 +31,7 @@ def price_trend(data):
 def cal_harden_hook():
     conn = mongoutil.get_collection(constants.harden_hook_stocks)
     daily_result = ts.get_today_all()
-    pre_harden_stocks = mongoutil.get_harden_stocks()
+    pre_harden_stocks = mongoutil.get_harden_codes()
     # pre_harden_stocks = ['600753','601375','603603']
 
     for i in range(0,len(pre_harden_stocks)):
@@ -48,5 +48,14 @@ def cal_harden_hook():
             conn.insert(post)
 
 
+def get_pre_harden():
+    result = []
+    conn = mongoutil.get_collection(constants.harden_stocks)
+    data = conn.find()
+    for ele in data:
+        record = [ele['stock'],ele['name'],str(ele['p_change']),ele['date']]
+        result.append(record)
+    return result
+
 if __name__ == "__main__":
-    cal_harden_hook()
+    print(get_pre_harden())
