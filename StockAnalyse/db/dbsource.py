@@ -28,7 +28,7 @@ def save_harden_stocks():
 
 
 if __name__ == "__main__":
-    # save_harden_stocks()
+    save_harden_stocks()
     # df = ts.get_tick_data('603991','2017-03-16')
     #
     # df = df.sort_index(ascending=False)
@@ -36,7 +36,4 @@ if __name__ == "__main__":
     # hardenstock.price_trend(df)
     # df = df[0:-2]
     # print(df.iloc[-1]['pchange'])
-    data = ts.get_today_all()
-    ele = data.loc[data['code'] == '600753'].iloc[0]
 
-    print("\n",str(ele['open']),str(ele['changepercent']))

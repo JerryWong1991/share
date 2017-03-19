@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指标分析系统</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.min.css"/>
+
+</head>
+<body>
+
+<h4 style="text-align:center">今天走势符合倒钩的股票(下午4点后更新当天的数据)</h4>
+<table id="harden_trend" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>代码</th>
+        <th>名称</th>
+        <th>涨幅</th>
+        <th>日期</th>
+    </tr>
+    </thead>
+</table>
+
+<h4 style="text-align:center">上一交易日一字板涨停股票列表</h4>
+<table id="harden_pre" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>代码</th>
+        <th>名称</th>
+        <th>涨幅</th>
+        <th>日期</th>
+    </tr>
+    </thead>
+</table>
+
+<h4 style="text-align:center"><b>前一日涨停且今天又有倒钩的股票</b></h4>
+<table id="harden_hook" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>代码</th>
+        <th>名称</th>
+        <th>涨幅</th>
+        <th>日期</th>
+    </tr>
+    </thead>
+</table>
+
+</body>
+<script src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./js/datatables.min.js"></script>
+<script type="text/javascript" src="./js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#harden_pre').DataTable( {
+        "ajax": 'http://127.0.0.1:5000/api/pre_harden'
+    } );
+    $('#harden_trend').DataTable( {
+        "ajax": 'http://127.0.0.1:5000/api/hook_today'
+    } );
+    $('#harden_hook').DataTable( {
+        "ajax": 'http://127.0.0.1:5000/api/harden_hook'
+    } );
+} );
+</script>
+ 
+</html>

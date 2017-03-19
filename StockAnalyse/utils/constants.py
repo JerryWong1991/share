@@ -19,3 +19,5 @@ date_today = str(datetime.date.today())
 harden_stocks = "handen_stocks"
 # 满足倒挂一字板的股票
 harden_hook_stocks = "harden_hook"
+# 当天满足倒钩的股票
+hook_stocks = "hook_stocks"
