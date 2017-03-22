@@ -1,7 +1,7 @@
 # 从外网数据源获得相关的行情数据
 from pymongo import MongoClient
 
-client = MongoClient("192.250.110.33", 27017)
+client = MongoClient("127.0.0.1", 27017)
 db = client.stock_analyse
 
 # 获得相关collection连接的工厂类

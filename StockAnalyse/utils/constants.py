@@ -7,16 +7,16 @@ harden_limit = 9.97
 # 涨停板股票换手率不超过的值（百分值）
 turnover_limt = 3
 # 倒挂一字板收盘涨幅不低于的百分值
-hook_pchange_limit = 4
+hook_pchange_limit = 7
 # 高开低走的振幅要求
-gkdz_limit = 0.025
+gkdz_limit = 0.01
 
 
 #今天的日期
 date_today = str(datetime.date.today())
 
 # 涨停股票池
-harden_stocks = "handen_stocks"
+harden_stocks = "harden_stocks"
 # 满足倒挂一字板的股票
 harden_hook_stocks = "harden_hook"
 # 当天满足倒钩的股票

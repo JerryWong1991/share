@@ -1,5 +1,5 @@
 # 跟涨停相关的指标
-import pylab
+# import pylab
 from db import mongoutil
 from utils import constants
 import tushare as ts
@@ -8,27 +8,27 @@ import tushare as ts
 ############################# 计算类方法区 ##########################
 
 # 绘图-股价和分时均价走势图
-def price_trend(data):
-    price_vec = data['price'].tolist()
-    volume_vec = data['volume'].tolist()
-    amount_vec = data['amount'].tolist()
-
-    avg_price = []
-    avg_price.append(price_vec[0])
-
-    for i in range(1,len(volume_vec)):
-        volume_vec[i] = volume_vec[i] + volume_vec[i-1]
-        amount_vec[i] = amount_vec[i] + amount_vec[i-1]
-        avg_price.append(amount_vec[i] / ((volume_vec[i] * 100)))
-
-    pylab.figure(1)
-    x = range(len(price_vec))
-
-    pylab.plot(x, price_vec, "b")
-    pylab.plot(x, avg_price, 'y')
-    pylab.show()
-
-    return price_vec,avg_price
+# def price_trend(data):
+#     price_vec = data['price'].tolist()
+#     volume_vec = data['volume'].tolist()
+#     amount_vec = data['amount'].tolist()
+#
+#     avg_price = []
+#     avg_price.append(price_vec[0])
+#
+#     for i in range(1,len(volume_vec)):
+#         volume_vec[i] = volume_vec[i] + volume_vec[i-1]
+#         amount_vec[i] = amount_vec[i] + amount_vec[i-1]
+#         avg_price.append(amount_vec[i] / ((volume_vec[i] * 100)))
+#
+#     pylab.figure(1)
+#     x = range(len(price_vec))
+#
+#     pylab.plot(x, price_vec, "b")
+#     pylab.plot(x, avg_price, 'y')
+#     pylab.show()
+#
+#     return price_vec,avg_price
 
 # 计算符合倒挂一字板的标的
 def cal_harden_hook():
@@ -86,11 +86,12 @@ def get_harden_relate_data(target):
     conn = mongoutil.get_collection(target)
     data = conn.find()
     for ele in data:
-        record = [ele['stock'], ele['name'], ele['p_change'], ele['date']]
+        record = [href(ele['stock']), ele['name'], ele['p_change'], ele['date']]
         result.append(record)
     return result
 
-
+def href(code):
+    return "<a target="'_blank'" href=http://stockpage.10jqka.com.cn/"+code+"/>"+code+"</a>"
 
 if __name__ == "__main__":
     cal_harden_hook()
